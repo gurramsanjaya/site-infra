@@ -1,0 +1,36 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: {{ include "infra.gatewayName" . }}
+  labels:
+    {{- include "infra.labels" . | nindent 4 }}
+  annotations:
+    cert-manager.io/cluster-issuer: {{ include "infra.clusterIssuerName" . }}
+    {{- if and .Values.gateway .Values.gateway.annotations }}
+      {{- toYaml .Values.gateway.annotations | nindent 4 }}
+    {{- end }}
+spec:
+  gatewayClassName: nginx
+  {{- if and .Values.gateway .Values.gateway.infrastructure }}
+  infrastructure:
+    {{- toYaml .Values.gateway.infrastructure | nindent 4 }}
+  {{- end }}
+  listeners:
+    - name: {{ include "infra.solverHttpListener" . }}
+      protocol: HTTP
+      port: 80
+    {{- if .Values.gateway }}
+    {{- range $hostname := .Values.gateway.hostnames }}
+    - name: {{ include "infra.httpsListener" $hostname.name }}
+      protocol: HTTPS
+      port: 443
+      hostname: "{{ $hostname.name }}"
+      allowedRoutes:
+        namespaces:
+          from: All
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: {{ $hostname.secret }}
+    {{- end }}
+    {{- end }}

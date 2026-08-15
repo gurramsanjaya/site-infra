@@ -1,0 +1,6 @@
+dependencies:
+- name: nginx-gateway-fabric
+  repository: oci://ghcr.io/nginx/charts
+  version: 2.6.7
+digest: sha256:35504d3383f18e642dbaf54a98da04633475f0a6835268969c4adf0870c21c90
+generated: "2026-08-01T07:52:17.830094107+05:30"

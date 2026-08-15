@@ -1,0 +1,25 @@
+# email to send issuer notifications
+email: gurramsanjaya@questingknight.org
+# acme private secret key 
+privateKeySecretRef: site-issuer-secret
+
+gateway:
+  # gateway annotations
+  annotations:
+    cert-manager.io/common-name: yourorgname.com
+  # list of hostname-secret mapping
+  hostnames:
+      # hostname
+      # Note: wildcards won't work with http01 solver since there
+      #       is no way to validate wildcard through 'A' DNS record
+    - name: yourorgname.com
+      # secret name, can be same for different hostnames
+      secret: yourorgname-com-tls-secret
+  # gateway infrastructure struct to populate values to any 
+  # resources created in response to this gateway
+  # refer: https://gateway-api.sigs.k8s.io/reference/api-spec/main/spec/#gatewayinfrastructure
+  infrastructure:
+    annotations:
+      # default loadbalancer name for standard aks azure load balancer
+      service.beta.kubernetes.io/azure-load-balancer-configurations: "kubernetes"
+      service.beta.kubernetes.io/azure-pip-name: 

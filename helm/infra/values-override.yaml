@@ -1,0 +1,14 @@
+
+gateway:
+  annotations:
+    cert-manager.io/common-name: questingknight.org
+
+  hostnames:
+    - name: questingknight.org
+      secret: questingknight-org-tls-secret
+    - name: www.questingknight.org
+      secret: questingknight-org-tls-secret
+  
+  infrastructure:
+    annotations:
+      service.beta.kubernetes.io/azure-pip-name: e268044d-9a62-42a8-9cb7-59356e0ab899

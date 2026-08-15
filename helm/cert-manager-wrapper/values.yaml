@@ -1,0 +1,30 @@
+cert-manager:
+  crds:
+    enabled: true
+  resources:
+    limits:
+      memory: 200Mi
+      cpu: 250m
+  webhook:
+    resources:
+      limits:
+        memory: 200Mi
+        cpu: 250m
+  cainjector:
+    resources:
+      limits:
+        memory: 200Mi
+        cpu: 250m
+  startupapicheck:
+    resources:
+      limits:
+        memory: 200Mi
+        cpu: 250m
+  config:
+    gatewayAPI:
+      enabled: true
+    acmeHTTP01Config:
+      solverResourceLimitsCPU: 100m
+      solverResourceLimitsMemory: 100Mi
+    
+    
