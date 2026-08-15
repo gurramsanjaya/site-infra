@@ -1,5 +1,5 @@
 # email to send issuer notifications
-email: gurramsanjaya@questingknight.org
+email: youremail@yourorgname.com
 # acme private secret key 
 privateKeySecretRef: site-issuer-secret
 
