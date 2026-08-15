@@ -1,6 +1,6 @@
 # Kubernetes Infrastructure Deployment
 
-This repository provides infrastructure-as-code for provisioning and configuring a Kubernetes environment using Helm charts and Terraform modules.
+This repository provides infrastructure-as-code for provisioning and configuring an Azure AKS environment with very basic and cheapeast defaults using Helm charts and Terraform modules.
 
 ## 📁 Directory Structure
 
