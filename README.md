@@ -1,6 +1,6 @@
-# Kubernetes Infrastructure Deployment
+# Basic Website AKS Deployment
 
-This repository provides infrastructure-as-code for provisioning and configuring an Azure AKS environment with very basic and cheapeast defaults using Helm charts and Terraform modules.
+This repository provides infrastructure-as-code for provisioning and configuring an Azure AKS environment with **very basic and the cheapest defaults** (*that I managed to verify so far. The AKS Cluster + Registry can probably be made even cheaper*) using Helm charts and Terraform modules.
 
 ## 📁 Directory Structure
 
@@ -59,12 +59,16 @@ TERRAFORM_BIN=terraform bash helm/install-script.sh
 
 - **Fabric Ingress Gateway**: NGINX Gateway for Fabric network
   > Chart definition: [`helm/nginx-gateway-fabric-wrapper/Chart.yaml`](helm/nginx-gateway-fabric-wrapper/Chart.yaml:1)
-- **cert-manager**: Configuration for certificate management
+- **Cert-Manager**: Configuration for certificate management
   > Chart definition: [`helm/cert-manager-wrapper/Chart.yaml`](helm/cert-manager-wrapper/Chart.yaml:1)
 - **Core Infrastructure**: API Gateway, HTTP routes, ClusterIssuer
   > Chart definition: [`helm/infra/Chart.yaml`](helm/infra/Chart.yaml:1)
 - **Test Environment**: Sandbox deployment settings
   > Chart definition: [`helm/test/Chart.yaml`](helm/test/Chart.yaml:1)
+
+## 🛠️ Project Status
+- **Status**: Actively developed
+- **Next (soon)**: Anubis integration for rate-limiting
 
 ## 🤝 Contributing
 
